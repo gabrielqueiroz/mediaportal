@@ -1,7 +1,7 @@
 package mediaportal.java.controller;
 
 /**
- * Classe responsável para conter os métodos de validação.
+ * Classe responsavel para conter os metodos de validacao.
  * @author Gabriel Queiroz.
  *
  */
@@ -9,48 +9,65 @@ package mediaportal.java.controller;
 public class Validador {
 	
 	/**
-	 * Método para verificação se email é valido ou não.
+	 * MÃ©todo para verificacao se email Ã© valido ou nao.
 	 * @param mail
 	 * @return
 	 */
-	
 	public boolean validaEmail(String mail){
 		String[] parts = mail.split("@");
+		
+		boolean status = true;
 
-		//*Valida email t@es@te@teste.com.br
 		if(parts.length > 2)
-			return false;
+			status = false;
 		
 		String local = parts[0];
 		String dominio = parts[1];
 		
-		//Verificação da parte local		
-		//*Deve ter até 64 caracteres de comprimento e não menos do que 4.
+		//Verificacao da parte local		
+		//*Deve ter atÃ© 64 caracteres de comprimento e nao menos do que 4.
 		if(local.length()>64 || local.length()<4)
-			return false;		
-		//*Caractere '.' é válido, mas não pode iniciar e terminar a palavra ou ocorrer em sequência.
+			status = false;		
+		//*Caractere '.' Ã© valido, mas nao pode iniciar e terminar a palavra ou ocorrer em sequencia.
 		if(local.startsWith(".") || local.endsWith("."))
-			return false; 		
-		
-		String[] ponto = local.split(".");
+			status = false; 		
+		String[] ponto = local.split("\\.");
 		for(String s : ponto){
-			System.out.println(s);
 			if(s.length() == 0)
-				return false;
+				status = false; 
 		}
-		//*Os caracteres válidos são apenas alfanuméricos, minúsculos ou não.
-		boolean cond = local.matches("[a-z0-9]+");		
+		//*Os caracteres validos sao apenas alfanumericos, minusculos ou nao.
+		//**BONUS 1 - 'local' com caracteres especiais: ! # $ % & * + =
+		boolean cond = local.matches("[a-zA-Z0-9.!#$%&*]+");		
 		if(!cond)
-			return false;
+			status = false;
 		
-			
-		//Verificação da parte dominio
-		String[] etiquetas = dominio.split(".");
+		//**BONUS 2 -  'local' pode ter qualquer conteuÌdo desde que inicie e termine entre aspas duplas.
+//		if(local.startsWith("\"") && local.endsWith("\""));
+//			status = true;
 		
-		if(etiquetas.length > 3)
-			return false;
+		//Verificacao da parte dominio
+		String[] etiquetas = dominio.split("\\.");
 		
-		return false;
+		//*Dominio nao pode exceder 255 caraceteres.
+		if(dominio.length() > 255)
+			status = false;
+		
+		//**BONUS 3 - 'dominio' deve ser composto por entre 2 e 6 etiquetas, e a uÌltima contendo apenas 2 ou 3 caracteres.
+		if(etiquetas.length<2 || etiquetas.length>6)
+			status = false;
+		if(etiquetas[etiquetas.length - 1].length()<2 ||etiquetas[etiquetas.length - 1].length()>3)
+			status = false;
+		
+		//*Etiquetas devem ter ao menos 2 caraceteres e no maximo 63.
+		for(String e : etiquetas){
+			if(e.length()<2 || e.length()>255)
+				status = false;
+		}
+	
+		return status;
 	}
+	
+	
 	
 }

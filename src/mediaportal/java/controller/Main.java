@@ -14,11 +14,13 @@ public class Main {
 		//Teste de Encamaneto.
 		//ConstrutorEncanamentoTester cETester = new ConstrutorEncanamentoTester();
 				
-		ConstrutorEncanamento cE = new ConstrutorEncanamento();
-		System.out.println(cE.encanamento(3, 1, 1, 5, 8));
-		System.out.println(cE.encanamento(3, 1, 1, 5, 9));
-		System.out.println(cE.encanamento(10, 1, 2, 7, 15));
+//		ConstrutorEncanamento cE = new ConstrutorEncanamento();
+//		System.out.println(cE.encanamento(3, 1, 1, 5, 8));
+//		System.out.println(cE.encanamento(3, 1, 1, 5, 9));
+//		System.out.println(cE.encanamento(10, 1, 2, 7, 15));
 		
+		ProblemaArmarios pA = new ProblemaArmarios();
+		System.out.println(pA.problema(100));
 	}
 
 }

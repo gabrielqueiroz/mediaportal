@@ -13,6 +13,7 @@ package mediaportal.java.controller;
 
 public class ConstrutorEncanamento {
 	
+	
 	/**
 	 * Calculo recurso com parametrizacao do tamanho do cano.
 	 * @param p
@@ -41,4 +42,5 @@ public class ConstrutorEncanamento {
 	
 		return false;
 	}
+
 }

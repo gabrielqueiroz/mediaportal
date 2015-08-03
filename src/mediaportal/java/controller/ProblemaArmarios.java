@@ -4,7 +4,12 @@ import java.util.HashMap;
 
 public class ProblemaArmarios {
 
-	public HashMap<Integer,String> problema(int qtdArmarios){
+	/**
+	 * 
+	 * @param qtdArmarios
+	 * @return
+	 */
+	public int problema(int qtdArmarios){
 		int homens = 100;
 		HashMap<Integer, String> armarios = new HashMap<Integer, String>();
 		
@@ -44,7 +49,15 @@ public class ProblemaArmarios {
 			}
 			homens--;
 		}
+		System.out.println(armarios);
 		
-		return armarios;
+		int countArmarios=0;
+		for(int i=1;i<=qtdArmarios;i++){
+			if(armarios.get(i).equals("aberto"))
+				countArmarios = countArmarios+1;
+		}
+			
+		
+		return countArmarios;
 	}
 }

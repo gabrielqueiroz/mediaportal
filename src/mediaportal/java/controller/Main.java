@@ -9,17 +9,16 @@ public class Main {
 		System.out.println("**Media Portal Java Teste**");
 		
 		//Teste de Validador.
-		//ValidadorTester vTester = new ValidadorTester();
+		ValidadorTester vTester = new ValidadorTester();
+		vTester.initialize();
 		
 		//Teste de Encamaneto.
-		//ConstrutorEncanamentoTester cETester = new ConstrutorEncanamentoTester();
-				
-//		ConstrutorEncanamento cE = new ConstrutorEncanamento();
-//		System.out.println(cE.encanamento(3, 1, 1, 5, 8));
-//		System.out.println(cE.encanamento(3, 1, 1, 5, 9));
-//		System.out.println(cE.encanamento(10, 1, 2, 7, 15));
+		ConstrutorEncanamentoTester cETester = new ConstrutorEncanamentoTester();
+		cETester.initialize();
 		
+		//Problema Armarios.
 		ProblemaArmarios pA = new ProblemaArmarios();
+		System.out.println("Exemplo do Problema dos Armarios (100 Armarios).");		
 		System.out.println(pA.problema(100));
 	}
 

@@ -45,7 +45,7 @@ public class ValidadorTester {
 	/**
 	 * Teste automatico que demonstra a funcao validaEmail da classe Validador.
 	 */
-	public void AutomaticTest(){
+	private void automaticTest(){
 		for(String e : emails)
 			System.out.println("Email: "+e+"	status:"+v.validaEmail(e));
 	}
@@ -53,27 +53,27 @@ public class ValidadorTester {
 	/**
 	 * Teste manual que demonstra a funcao validaEmail da classe Validador.
 	 */
-	public void ManualTest(){
-		System.out.print("Enter email for validation:");
+	private void manualTest(){
+		System.out.print("Insira email para validacao:");
 		in = new Scanner(System.in);
 		String s = in.next();
 		System.out.println("Email: "+s+"	status:"+v.validaEmail(s));
 	}
 
 	/**
-	 * Construtor da classe de testes.
+	 * Responsável por incializar os métodos da classe teste.
 	 */
-	public ValidadorTester(){
-		System.out.println("**Validador Tester");
-		System.out.println("1-Automatic Test\n2-Manual Test");
+	public void initialize(){
+		System.out.println("**Teste Validador");
+		System.out.println("1-Teste Automatico\n2-Teste Manual");
 		
 		in = new Scanner(System.in);
 		int i = in.nextInt();
 		
 		switch(i){
-			case 1:	AutomaticTest();
+			case 1:	automaticTest();
 					break;
-			case 2: ManualTest();
+			case 2: manualTest();
 					break;
 			default:System.out.println("Invalid Option");
 					break;
